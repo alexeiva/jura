@@ -1,5 +1,8 @@
 {
 .appVersion = "3340";
+DisplayStrings = (
+"/O-cy/ve-cy/o-cy/shcha-cy/ie-cy/ka-cy/o-cy/en-cy/es-cy/ie-cy/er-cy/ve-cy/en-cy/yeru-cy/iishort-cy/space/Ve-cy/pe-cy/er-cy/o-cy/ka-cy/space/Em-cy/u-cy/te-cy/a-cy/ge-cy/ie-cy/en-cy/en-cy/yeru-cy/iishort-cy/space/En-cy/a-cy/be-cy/ie-cy/ge-cy/space/Sha-cy/io-cy/el-cy/ka-cy/space/Ef-cy/a-cy/ka-cy/ie-cy/el-cy/space/Ze-cy/a-cy/em-cy/space/De-cy/u-cy/er-cy/en-cy/o-cy/iishort-cy/space/Pe-cy/a-cy/es-cy/space/Ve-cy/yeru-cy/ve-cy/o-cy/el-cy/o-cy/ka-cy/u-cy/te-cy/space/U-cy/te-cy/io-cy/er-cy/space/Er-cy/yeru-cy/te-cy/yeru-cy/iishort-cy/space/Es-cy/ve-cy/a-cy/el-cy/ya-cy/te-cy/softsign-cy/space/Ze-cy/ii-cy/ge-cy/ze-cy/a-cy/ge-cy/space/A-cy/u-cy/el-cy/space/O-cy/es-cy/te-cy/yeru-cy/ve-cy/a-cy/ve-cy/sha-cy/ii-cy/iishort-cy/space/El-cy/ie-cy/es-cy/space/Es-cy/ii-cy/ya-cy/en-cy/softsign-cy/ie-cy/space/Ve-cy/o-cy/pe-cy/er-cy/u-cy/te-cy/space/Ge-cy/o-cy/el-cy/o-cy/el-cy/io-cy/de-cy/space/Ze-cy/el-cy/a-cy/ka-cy/space/O-cy/de-cy/u-cy/ha-cy/o-cy/te-cy/ve-cy/o-cy/er-cy/io-cy/en-cy/en-cy/o-cy/es-cy/te-cy/softsign-cy/space/El-cy/a-cy/ze-cy/u-cy/te-cy/che-cy/ii-cy/tse-cy/a-cy/space/A-cy/ka-cy/ka-cy/er-cy/ie-cy/de-cy/ii-cy/te-cy/a-cy/tse-cy/ii-cy/ya-cy/space/De-cy/ii-cy/es-cy/pe-cy/ie-cy/te-cy/che-cy/ie-cy/er-cy/ii-cy/ze-cy/a-cy/tse-cy/ii-cy/ya-cy/space/Ii-cy/ze-cy/o-cy/be-cy/er-cy/a-cy/ze-cy/ii-cy/ve-cy/sha-cy/ii-cy/iishort-cy \012\012Arrowroot/space Barley/space Chervil/space Dumpling/space Endive/space Flaxseed/space Garbanzo/space Hijiki/space Ishtu/space Jicama/space Kale/space Lychee/space Marjoram/space Nectarine/space Oxtail/space Pizza/space Quinoa/space Roquefort/space Squash/space Tofu/space Uppuma/space Vanilla/space Wheat/space Xergis/space Yogurt"
+);
 classes = (
 {
 automatic = 1;
@@ -37135,7 +37138,7 @@ unicode = 04A5;
 {
 color = 5;
 glyphname = "o-cy";
-lastChange = "2025-02-11 10:59:19 +0000";
+lastChange = "2025-02-11 17:39:06 +0000";
 layers = (
 {
 components = (
@@ -81007,6 +81010,9 @@ kerning = {
 "@MMK_R_two" = -20;
 "@MMK_R_u" = -100;
 };
+"@MMK_L_GRK_Gamma" = {
+"@MMK_R_o" = -300;
+};
 "@MMK_L_H" = {
 "@MMK_R_quotesingle" = -20;
 "@MMK_R_seven" = -20;
@@ -81567,6 +81573,9 @@ equal = 0;
 "@MMK_R_three" = 0;
 "@MMK_R_two" = -20;
 "@MMK_R_u" = -100;
+};
+"@MMK_L_GRK_Gamma" = {
+"@MMK_R_o" = -300;
 };
 "@MMK_L_H" = {
 "@MMK_R_quotesingle" = -20;
