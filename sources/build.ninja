@@ -1,0 +1,493 @@
+# buildVariable: Build a variable font from a source file
+rule buildVariable
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner fontmake --output-path $out -o variable $
+      $fontmake_type $in $args $stamp
+  description = buildVariable
+
+# fix: Run gftools-fix
+rule fix
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner gftools-fix-font -o $out $args $in $stamp
+  description = fix
+
+# compress: Compress to webfont
+rule compress
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner fonttools ttLib.woff2 compress -o $out $in $
+      $stamp
+  description = compress
+
+# remapLayout: Run gftools-remap-layout to change a font's layout rules
+rule remapLayout
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner gftools-remap-layout -o $out $in $args $stamp
+  description = remapLayout
+
+# rename: Rename a font
+rule rename
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner gftools-rename-font -o $out $args $in $
+      "$name" $stamp
+  description = rename
+
+# buildStat: Build a STAT table from one or more source files
+rule buildSTAT-operation
+  command = gftools-gen-stat --out $tempdir $args -- $in && mv $finalfile $
+      $out $stamp
+rule buildSTAT-postprocess
+  command = gftools-gen-stat --inplace $args -- $in $stamp
+
+# instantiateUfo: Create instance UFOs from a Glyphs or designspace file
+rule instantiateUfo
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner fontmake -i "$instance_name" -o ufo $
+      $fontmake_type $in $args $stamp
+  description = instantiateUfo
+
+# buildTTF: Build a TTF from a source file
+rule buildTTF
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner fontmake --output-path $out -o ttf $
+      $fontmake_type $in $args $stamp
+  description = buildTTF
+
+# autohint: Run gftools-autohint
+rule autohint
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner gftools-autohint $args -o $out $in $stamp
+  description = autohint
+
+# buildOTF: Build a OTF from a source file
+rule buildOTF
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner fontmake --output-path $out -o otf $
+      $fontmake_type $in $args $stamp
+  description = buildOTF
+
+# copy: Copy a file
+rule copy
+  command = /Users/alexeiva/venv/ftools/bin/python3 -m $
+      gftools.builder.jobrunner cp $in $out $stamp
+  description = copy
+
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpunu2p8gi
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpunu2p8gi: $
+    buildVariable Jura.glyphs
+  operation = buildVariable
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -g
+  fontmake_args =  --verbose WARNING 
+# Generating instance_ufos/Jura-Light.ufo.json
+build instance_ufos/Jura-Light.ufo.json: instantiateUfo Jura.glyphs
+  operation = instantiateUfo
+  instance_name = Jura Light
+  fontmake_type = -g
+  fontmake_args =  --verbose WARNING 
+  args =  --ufo-structure=json --instance-dir instance_ufos
+# Generating instance_ufos/Jura-Regular.ufo.json
+build instance_ufos/Jura-Regular.ufo.json: instantiateUfo Jura.glyphs
+  operation = instantiateUfo
+  instance_name = Jura Regular
+  fontmake_type = -g
+  fontmake_args =  --verbose WARNING 
+  args =  --ufo-structure=json --instance-dir instance_ufos
+# Generating instance_ufos/Jura-Medium.ufo.json
+build instance_ufos/Jura-Medium.ufo.json: instantiateUfo Jura.glyphs
+  operation = instantiateUfo
+  instance_name = Jura Medium
+  fontmake_type = -g
+  fontmake_args =  --verbose WARNING 
+  args =  --ufo-structure=json --instance-dir instance_ufos
+# Generating instance_ufos/Jura-SemiBold.ufo.json
+build instance_ufos/Jura-SemiBold.ufo.json: instantiateUfo Jura.glyphs
+  operation = instantiateUfo
+  instance_name = Jura SemiBold
+  fontmake_type = -g
+  fontmake_args =  --verbose WARNING 
+  args =  --ufo-structure=json --instance-dir instance_ufos
+# Generating instance_ufos/Jura-Bold.ufo.json
+build instance_ufos/Jura-Bold.ufo.json: instantiateUfo Jura.glyphs
+  operation = instantiateUfo
+  instance_name = Jura Bold
+  fontmake_type = -g
+  fontmake_args =  --verbose WARNING 
+  args =  --ufo-structure=json --instance-dir instance_ufos
+# Generating ../fonts/webfonts/Jura[wght].woff2
+build ../fonts/webfonts/Jura[wght].woff2: compress $
+    ../fonts/variable/Jura[wght].ttf
+  operation = compress
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpletxgt9d
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpletxgt9d: $
+    remapLayout ../fonts/variable/Jura[wght].ttf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating ../fonts/webfonts/Jura-Light.woff2
+build ../fonts/webfonts/Jura-Light.woff2: compress ../fonts/ttf/Jura-Light.ttf
+  operation = compress
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp00yf3bg2
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp00yf3bg2: $
+    remapLayout ../fonts/ttf/Jura-Light.ttf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpjy1d0cqi
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpjy1d0cqi: $
+    remapLayout ../fonts/otf/Jura-Light.otf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating ../fonts/webfonts/Jura-Regular.woff2
+build ../fonts/webfonts/Jura-Regular.woff2: compress $
+    ../fonts/ttf/Jura-Regular.ttf
+  operation = compress
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpmgg3btdk
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpmgg3btdk: $
+    remapLayout ../fonts/ttf/Jura-Regular.ttf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp3db4jxun
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp3db4jxun: $
+    remapLayout ../fonts/otf/Jura-Regular.otf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating ../fonts/webfonts/Jura-Medium.woff2
+build ../fonts/webfonts/Jura-Medium.woff2: compress $
+    ../fonts/ttf/Jura-Medium.ttf
+  operation = compress
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpin4e6g_c
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpin4e6g_c: $
+    remapLayout ../fonts/ttf/Jura-Medium.ttf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpccrfs8q8
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpccrfs8q8: $
+    remapLayout ../fonts/otf/Jura-Medium.otf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating ../fonts/webfonts/Jura-SemiBold.woff2
+build ../fonts/webfonts/Jura-SemiBold.woff2: compress $
+    ../fonts/ttf/Jura-SemiBold.ttf
+  operation = compress
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpg38ixhiy
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpg38ixhiy: $
+    remapLayout ../fonts/ttf/Jura-SemiBold.ttf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpgahzpq36
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpgahzpq36: $
+    remapLayout ../fonts/otf/Jura-SemiBold.otf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating ../fonts/webfonts/Jura-Bold.woff2
+build ../fonts/webfonts/Jura-Bold.woff2: compress ../fonts/ttf/Jura-Bold.ttf
+  operation = compress
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp1jc3ovkk
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp1jc3ovkk: $
+    remapLayout ../fonts/ttf/Jura-Bold.ttf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmprdq8cvop
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmprdq8cvop: $
+    remapLayout ../fonts/otf/Jura-Bold.otf
+  operation = remapLayout
+  args = 'smcp -> ccmp'
+# Postprocessing  with BuildSTAT
+build $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp846l30c8.buildStatstamp: $
+    buildSTAT-postprocess ../fonts/variable/JuraSC[wght].ttf $
+    ../fonts/variable/Jura[wght].ttf
+  stamp =  && touch $
+      /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp846l30c8.buildStatstamp
+  postprocess = buildStat
+  args = --src /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmprs48nyex
+# Generating ../fonts/variable/Jura[wght].ttf
+build ../fonts/variable/Jura[wght].ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpunu2p8gi
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp56qrg5ho
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp56qrg5ho: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpletxgt9d
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/variable/JuraSC[wght].ttf
+build ../fonts/variable/JuraSC[wght].ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp56qrg5ho
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp5ii_2ubu
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp5ii_2ubu: $
+    buildTTF instance_ufos/Jura-Light.ufo.json
+  operation = buildTTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp8pu1y8el
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp8pu1y8el: $
+    buildOTF instance_ufos/Jura-Light.ufo.json
+  operation = buildOTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpc3egwgrz
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpc3egwgrz: $
+    autohint /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp5ii_2ubu
+  operation = autohint
+  args = --fail-ok 
+# Generating ../fonts/ttf/Jura-Light.ttf
+build ../fonts/ttf/Jura-Light.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpc3egwgrz
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp95xxf0df
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp95xxf0df: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp00yf3bg2
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/ttf/JuraSC-Light.ttf
+build ../fonts/ttf/JuraSC-Light.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp95xxf0df
+  operation = fix
+  args = 
+# Generating ../fonts/otf/Jura-Light.otf
+build ../fonts/otf/Jura-Light.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp8pu1y8el
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpc7uoaae8
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpc7uoaae8: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpjy1d0cqi
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/otf/JuraSC-Light.otf
+build ../fonts/otf/JuraSC-Light.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpc7uoaae8
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpljxzmofv
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpljxzmofv: $
+    buildTTF instance_ufos/Jura-Regular.ufo.json
+  operation = buildTTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmphnsrwitz
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmphnsrwitz: $
+    buildOTF instance_ufos/Jura-Regular.ufo.json
+  operation = buildOTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp836t4wkl
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp836t4wkl: $
+    autohint /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpljxzmofv
+  operation = autohint
+  args = --fail-ok 
+# Generating ../fonts/ttf/Jura-Regular.ttf
+build ../fonts/ttf/Jura-Regular.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp836t4wkl
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpriiwdudg
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpriiwdudg: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpmgg3btdk
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/ttf/JuraSC-Regular.ttf
+build ../fonts/ttf/JuraSC-Regular.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpriiwdudg
+  operation = fix
+  args = 
+# Generating ../fonts/otf/Jura-Regular.otf
+build ../fonts/otf/Jura-Regular.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmphnsrwitz
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpc5suys0_
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpc5suys0_: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp3db4jxun
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/otf/JuraSC-Regular.otf
+build ../fonts/otf/JuraSC-Regular.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpc5suys0_
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp4nla0ogq
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp4nla0ogq: $
+    buildTTF instance_ufos/Jura-Medium.ufo.json
+  operation = buildTTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp7d4fzons
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp7d4fzons: $
+    buildOTF instance_ufos/Jura-Medium.ufo.json
+  operation = buildOTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpq4n77b2b
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpq4n77b2b: $
+    autohint /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp4nla0ogq
+  operation = autohint
+  args = --fail-ok 
+# Generating ../fonts/ttf/Jura-Medium.ttf
+build ../fonts/ttf/Jura-Medium.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpq4n77b2b
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpaeozduv5
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpaeozduv5: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpin4e6g_c
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/ttf/JuraSC-Medium.ttf
+build ../fonts/ttf/JuraSC-Medium.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpaeozduv5
+  operation = fix
+  args = 
+# Generating ../fonts/otf/Jura-Medium.otf
+build ../fonts/otf/Jura-Medium.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp7d4fzons
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmph_8qx4bd
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmph_8qx4bd: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpccrfs8q8
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/otf/JuraSC-Medium.otf
+build ../fonts/otf/JuraSC-Medium.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmph_8qx4bd
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp_3epdw28
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp_3epdw28: $
+    buildTTF instance_ufos/Jura-SemiBold.ufo.json
+  operation = buildTTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp4s3zumlj
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp4s3zumlj: $
+    buildOTF instance_ufos/Jura-SemiBold.ufo.json
+  operation = buildOTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpqyv172tn
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpqyv172tn: $
+    autohint /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp_3epdw28
+  operation = autohint
+  args = --fail-ok 
+# Generating ../fonts/ttf/Jura-SemiBold.ttf
+build ../fonts/ttf/Jura-SemiBold.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpqyv172tn
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp7n4tv3hj
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp7n4tv3hj: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpg38ixhiy
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/ttf/JuraSC-SemiBold.ttf
+build ../fonts/ttf/JuraSC-SemiBold.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp7n4tv3hj
+  operation = fix
+  args = 
+# Generating ../fonts/otf/Jura-SemiBold.otf
+build ../fonts/otf/Jura-SemiBold.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp4s3zumlj
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpit1bkrs1
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpit1bkrs1: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpgahzpq36
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/otf/JuraSC-SemiBold.otf
+build ../fonts/otf/JuraSC-SemiBold.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpit1bkrs1
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpccwpiwve
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpccwpiwve: $
+    buildTTF instance_ufos/Jura-Bold.ufo.json
+  operation = buildTTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpcw66qdlx
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpcw66qdlx: $
+    buildOTF instance_ufos/Jura-Bold.ufo.json
+  operation = buildOTF
+  args = --filter ...  --filter FlattenComponentsFilter --filter $
+      DecomposeTransformedComponentsFilter
+  fontmake_type = -u
+  fontmake_args =  --verbose WARNING 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpbeomqw0c
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpbeomqw0c: $
+    autohint /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpccwpiwve
+  operation = autohint
+  args = --fail-ok 
+# Generating ../fonts/ttf/Jura-Bold.ttf
+build ../fonts/ttf/Jura-Bold.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpbeomqw0c
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp7543zfz0
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp7543zfz0: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp1jc3ovkk
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/ttf/JuraSC-Bold.ttf
+build ../fonts/ttf/JuraSC-Bold.ttf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp7543zfz0
+  operation = fix
+  args = 
+# Generating ../fonts/otf/Jura-Bold.otf
+build ../fonts/otf/Jura-Bold.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpcw66qdlx
+  operation = fix
+  args = 
+# Generating /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpkiptltzp
+build /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpkiptltzp: rename $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmprdq8cvop
+  operation = rename
+  args = --just-family
+  name = Jura SC
+# Generating ../fonts/otf/JuraSC-Bold.otf
+build ../fonts/otf/JuraSC-Bold.otf: fix $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmpkiptltzp
+  operation = fix
+  args = 
+default ../fonts/webfonts/Jura[wght].woff2 $
+    ../fonts/webfonts/Jura-Light.woff2 ../fonts/webfonts/Jura-Regular.woff2 $
+    ../fonts/webfonts/Jura-Medium.woff2 $
+    ../fonts/webfonts/Jura-SemiBold.woff2 ../fonts/webfonts/Jura-Bold.woff2 $
+    /var/folders/xm/8_gkzvmn2f30h2nxxfdh_n380000gp/T/tmp846l30c8.buildStatstamp $
+    ../fonts/ttf/JuraSC-Light.ttf ../fonts/otf/JuraSC-Light.otf $
+    ../fonts/ttf/JuraSC-Regular.ttf ../fonts/otf/JuraSC-Regular.otf $
+    ../fonts/ttf/JuraSC-Medium.ttf ../fonts/otf/JuraSC-Medium.otf $
+    ../fonts/ttf/JuraSC-SemiBold.ttf ../fonts/otf/JuraSC-SemiBold.otf $
+    ../fonts/ttf/JuraSC-Bold.ttf ../fonts/otf/JuraSC-Bold.otf

@@ -1,5 +1,8 @@
 {
 .appVersion = "3340";
+DisplayStrings = (
+"/Be-cy"
+);
 classes = (
 {
 automatic = 1;
@@ -101,6 +104,7 @@ name = salt;
 automatic = 1;
 code = "sub a by a.ss01;\012";
 name = ss01;
+notes = "Name: ";
 },
 {
 code = "sub f f l by f_f_l;\012sub f f i by f_f_i;";
@@ -81707,9 +81711,6 @@ AE = -120;
 "@MMK_R_z" = -80;
 AE = -160;
 };
-"@MMK_L_Yu-cy" = {
-"@MMK_R_T" = 0;
-};
 "@MMK_L_Z" = {
 "@MMK_R_A" = -20;
 "@MMK_R_eight" = -20;
@@ -81781,7 +81782,6 @@ AE = -160;
 "@MMK_R_a" = -90;
 "@MMK_R_de-cy" = -60;
 "@MMK_R_el-cy" = -70;
-"@MMK_R_ereversed-cy" = -20;
 "@MMK_R_hyphen" = -200;
 "@MMK_R_o" = -40;
 "@MMK_R_period" = -330;
@@ -82361,9 +82361,6 @@ AE = -160;
 "@MMK_R_De-cy" = -50;
 "@MMK_R_Ze-cy" = -10;
 };
-"@MMK_L_Yu-cy" = {
-"@MMK_R_T" = 0;
-};
 "@MMK_L_Z" = {
 "@MMK_R_A" = -20;
 "@MMK_R_eight" = -20;
@@ -82435,7 +82432,6 @@ AE = -160;
 "@MMK_R_a" = -90;
 "@MMK_R_de-cy" = -60;
 "@MMK_R_el-cy" = -70;
-"@MMK_R_ereversed-cy" = -20;
 "@MMK_R_hyphen" = -200;
 "@MMK_R_o" = -40;
 "@MMK_R_period" = -330;
