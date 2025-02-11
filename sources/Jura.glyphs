@@ -54,7 +54,7 @@ name = Languagesystems;
 features = (
 {
 automatic = 1;
-code = "feature locl;\012feature sups;\012feature frac;\012feature ordn;\012feature case;\012feature salt;\012feature ss01;\012feature calt;\012feature c2sc;\012feature smcp;\012feature zero;\012";
+code = "feature locl;\012feature sups;\012feature frac;\012feature ordn;\012feature case;\012feature salt;\012feature ss01;\012feature calt;\012feature zero;\012";
 name = aalt;
 },
 {
@@ -101,7 +101,7 @@ name = salt;
 automatic = 1;
 code = "sub a by a.ss01;\012";
 name = ss01;
-notes = "Name: ";
+notes = "Name: Name: ";
 },
 {
 code = "sub f f l by f_f_l;\012sub f f i by f_f_i;";
@@ -110,16 +110,6 @@ name = dlig;
 {
 code = "sub @Uppercase germandbls' @Uppercase by germandbls.calt;\012sub @Uppercase @Uppercase germandbls' by germandbls.calt;";
 name = calt;
-},
-{
-automatic = 1;
-code = "sub A by a.sc;\012sub E by e.sc;\012sub I by i.sc;\012sub O by o.sc;\012";
-name = c2sc;
-},
-{
-automatic = 1;
-code = "sub a by a.sc;\012sub e by e.sc;\012sub i by i.sc;\012sub o by o.sc;\012sub idotless by i.sc;\012";
-name = smcp;
 },
 {
 automatic = 1;
@@ -23961,8 +23951,9 @@ rightMetricsKey = j;
 },
 {
 color = 9;
+export = 0;
 glyphname = a.sc;
-lastChange = "2019-09-04 19:35:22 +0000";
+lastChange = "2025-02-11 21:03:21 +0000";
 layers = (
 {
 anchors = (
@@ -24087,8 +24078,9 @@ source = A;
 },
 {
 color = 9;
+export = 0;
 glyphname = e.sc;
-lastChange = "2019-09-04 19:35:22 +0000";
+lastChange = "2025-02-11 21:03:21 +0000";
 layers = (
 {
 anchors = (
@@ -24225,8 +24217,9 @@ source = E;
 },
 {
 color = 9;
+export = 0;
 glyphname = i.sc;
-lastChange = "2019-09-04 19:35:22 +0000";
+lastChange = "2025-02-11 21:03:21 +0000";
 layers = (
 {
 anchors = (
@@ -24325,8 +24318,9 @@ source = I;
 },
 {
 color = 9;
+export = 0;
 glyphname = o.sc;
-lastChange = "2019-09-04 19:35:22 +0000";
+lastChange = "2025-02-11 21:03:21 +0000";
 layers = (
 {
 anchors = (
