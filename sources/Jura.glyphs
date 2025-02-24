@@ -1,7 +1,8 @@
 {
 .appVersion = "3343";
 DisplayStrings = (
-"/bulletoperator/divisionslash +/minus ×÷=/notequal ></greaterequal/lessequal ±/approxequal ~\012/bulletoperator/divisionslash +/minus ×÷=/notequal ></greaterequal/lessequal ±/approxequal ~\012"
+"/bulletoperator/divisionslash +/minus ×÷=/notequal ></greaterequal/lessequal ±/approxequal ~\012/bulletoperator/divisionslash +/minus ×÷=/notequal ></greaterequal/lessequal ±/approxequal ~\012",
+A
 );
 classes = (
 {
@@ -43,7 +44,7 @@ Tag = wght;
 );
 }
 );
-date = "2025-02-24 23:26:10 +0000";
+date = "2025-02-24 23:32:51 +0000";
 designer = "Daniel Johnson, Alexei Vanyashin, Mirko Velimirovic, Guldana Tauasar (Cyrillic)";
 designerURL = "http://www.danieljohnson.name";
 familyName = Jura;
@@ -102,7 +103,7 @@ name = salt;
 },
 {
 automatic = 1;
-code = "sub a by a.ss01;\012";
+code = "sub a by a.ss01;\012sub a-cy by a-cy.ss01;\012";
 name = ss01;
 notes = "Name: Name:";
 },
@@ -41496,6 +41497,29 @@ rightKerningGroup = l;
 unicode = 04CF;
 },
 {
+glyphname = "a-cy.ss01";
+layers = (
+{
+components = (
+{
+name = a.ss01;
+}
+);
+layerId = "C9A88445-F9B1-43BF-9834-532EB19954E9";
+width = 1224;
+},
+{
+components = (
+{
+name = a.ss01;
+}
+);
+layerId = "9D2B49D7-8C02-48EB-8D57-D561CCF616AE";
+width = 1296;
+}
+);
+},
+{
 color = 0;
 glyphname = Alpha;
 lastChange = "2019-07-10 15:33:17 +0000";
@@ -82168,27 +82192,45 @@ name = Light;
 weightClass = Light;
 },
 {
-interpolationWeight = 400;
+customParameters = (
+{
+name = InterpolationWeightY;
+value = 317;
+}
+);
+interpolationWeight = 374;
 instanceInterpolations = {
-"9D2B49D7-8C02-48EB-8D57-D561CCF616AE" = 0.25;
-"C9A88445-F9B1-43BF-9834-532EB19954E9" = 0.75;
+"9D2B49D7-8C02-48EB-8D57-D561CCF616AE" = "{0.185, 0.0425}";
+"C9A88445-F9B1-43BF-9834-532EB19954E9" = "{0.815, 0.9575}";
 };
 name = Regular;
 },
 {
-interpolationWeight = 500;
+customParameters = (
+{
+name = InterpolationWeightY;
+value = 376;
+}
+);
+interpolationWeight = 469;
 instanceInterpolations = {
-"9D2B49D7-8C02-48EB-8D57-D561CCF616AE" = 0.5;
-"C9A88445-F9B1-43BF-9834-532EB19954E9" = 0.5;
+"9D2B49D7-8C02-48EB-8D57-D561CCF616AE" = "{0.4225, 0.19}";
+"C9A88445-F9B1-43BF-9834-532EB19954E9" = "{0.5775, 0.81}";
 };
 name = Medium;
 weightClass = Medium;
 },
 {
-interpolationWeight = 600;
+customParameters = (
+{
+name = InterpolationWeightY;
+value = 499;
+}
+);
+interpolationWeight = 579;
 instanceInterpolations = {
-"9D2B49D7-8C02-48EB-8D57-D561CCF616AE" = 0.75;
-"C9A88445-F9B1-43BF-9834-532EB19954E9" = 0.25;
+"9D2B49D7-8C02-48EB-8D57-D561CCF616AE" = "{0.6975, 0.4975}";
+"C9A88445-F9B1-43BF-9834-532EB19954E9" = "{0.3025, 0.5025}";
 };
 name = SemiBold;
 weightClass = SemiBold;
@@ -83628,5 +83670,5 @@ manufacturer = "Daniel Johnson";
 manufacturerURL = "http://www.danieljohnson.name";
 unitsPerEm = 2000;
 versionMajor = 5;
-versionMinor = 205;
+versionMinor = 206;
 }
