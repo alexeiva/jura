@@ -27,7 +27,7 @@ jobs:
           mv fontbakery-report.html for-gh-pages
           mv proof/* for-gh-pages
     - name: Archive artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: Artifacts
         path: |
