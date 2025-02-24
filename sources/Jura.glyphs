@@ -1,5 +1,8 @@
 {
 .appVersion = "3343";
+DisplayStrings = (
+"/em-cy/em-cy"
+);
 classes = (
 {
 automatic = 1;
@@ -40,7 +43,7 @@ Tag = wght;
 );
 }
 );
-date = "2025-02-22 19:39:33 +0000";
+date = "2025-02-17 21:55:15 +0000";
 designer = "Daniel Johnson, Alexei Vanyashin, Mirko Velimirovic, Guldana Tauasar (Cyrillic)";
 designerURL = "http://www.danieljohnson.name";
 familyName = Jura;
@@ -63516,7 +63519,7 @@ unicode = A92F;
 {
 color = 11;
 glyphname = period;
-lastChange = "2025-02-22 19:38:12 +0000";
+lastChange = "2025-02-11 19:49:12 +0000";
 layers = (
 {
 layerId = "C9A88445-F9B1-43BF-9834-532EB19954E9";
@@ -82118,9 +82121,6 @@ AE = -160;
 "@MMK_L_e" = {
 "@MMK_R_x" = -20;
 };
-"@MMK_L_eght" = {
-"@MMK_R_period" = -40;
-};
 "@MMK_L_f" = {
 "@MMK_R_a" = -20;
 "@MMK_R_asterisk" = -60;
@@ -82133,11 +82133,7 @@ AE = -160;
 "@MMK_L_four" = {
 "@MMK_R_backslash" = -20;
 "@MMK_R_one" = -80;
-"@MMK_R_period" = -40;
 "@MMK_R_seven" = -20;
-};
-"@MMK_L_fve" = {
-"@MMK_R_period" = -40;
 };
 "@MMK_L_ge-cy" = {
 "@MMK_R_a" = -50;
@@ -82196,9 +82192,6 @@ AE = -160;
 "@MMK_R_ustraight-cy" = -20;
 "@MMK_R_v" = -20;
 };
-"@MMK_L_nne" = {
-"@MMK_R_period" = -40;
-};
 "@MMK_L_o" = {
 "@MMK_R_A" = -20;
 "@MMK_R_T" = -220;
@@ -82226,7 +82219,6 @@ AE = -160;
 "@MMK_L_one" = {
 "@MMK_R_four" = -40;
 "@MMK_R_hyphen" = -20;
-"@MMK_R_period" = -40;
 "@MMK_R_seven" = -40;
 };
 "@MMK_L_parenleft" = {
@@ -82305,7 +82297,7 @@ AE = -160;
 "@MMK_R_nine" = -20;
 "@MMK_R_o" = -60;
 "@MMK_R_one" = -80;
-"@MMK_R_period" = -220;
+"@MMK_R_period" = -280;
 "@MMK_R_slash" = -100;
 "@MMK_R_three" = -40;
 };
@@ -82339,9 +82331,6 @@ AE = -160;
 "@MMK_R_quotesingle" = -40;
 "@MMK_R_te-cy" = -120;
 "@MMK_R_ya-cy" = -30;
-};
-"@MMK_L_sx" = {
-"@MMK_R_period" = -40;
 };
 "@MMK_L_t" = {
 "@MMK_R_a" = -60;
@@ -82426,9 +82415,6 @@ AE = -160;
 "@MMK_R_period" = -60;
 "@MMK_R_ya-cy" = -20;
 };
-"@MMK_L_ya-cy" = {
-"@MMK_R_o" = -40;
-};
 "@MMK_L_z" = {
 "@MMK_R_a" = -40;
 "@MMK_R_o" = -40;
@@ -82438,6 +82424,9 @@ AE = -160;
 "@MMK_R_one" = -20;
 "@MMK_R_period" = -40;
 "@MMK_R_seven" = -80;
+};
+"@MMK_L_ya-cy" = {
+"@MMK_R_o" = -40;
 };
 };
 "9D2B49D7-8C02-48EB-8D57-D561CCF616AE" = {
@@ -82542,9 +82531,9 @@ AE = -160;
 "iishort-cy" = -190;
 };
 "@MMK_L_H" = {
-"@MMK_R_Ya-cy" = 0;
 "@MMK_R_quotesingle" = -20;
 "@MMK_R_seven" = -20;
+"@MMK_R_Ya-cy" = 0;
 };
 "@MMK_L_K" = {
 "@MMK_R_a" = -120;
@@ -82840,7 +82829,6 @@ AE = -160;
 "@MMK_R_backslash" = -20;
 "@MMK_R_one" = -80;
 "@MMK_R_seven" = -20;
-"@MMK_R_period" = -40;
 };
 "@MMK_L_ge-cy" = {
 "@MMK_R_a" = -50;
@@ -82927,7 +82915,6 @@ AE = -160;
 "@MMK_R_four" = -40;
 "@MMK_R_hyphen" = -20;
 "@MMK_R_seven" = -40;
-"@MMK_R_period" = -40;
 };
 "@MMK_L_parenleft" = {
 "@MMK_R_jdotless" = 80;
@@ -83005,7 +82992,7 @@ AE = -160;
 "@MMK_R_nine" = -20;
 "@MMK_R_o" = -60;
 "@MMK_R_one" = -80;
-"@MMK_R_period" = -220;
+"@MMK_R_period" = -280;
 "@MMK_R_slash" = -100;
 "@MMK_R_three" = -40;
 };
@@ -83109,11 +83096,11 @@ AE = -160;
 "@MMK_R_period" = -180;
 };
 "@MMK_L_ve-cy" = {
-"@MMK_R_de-cy" = 20;
 "@MMK_R_quesion" = -40;
 "@MMK_R_quotesinglbase" = -20;
 "@MMK_R_quotesingle" = -30;
 "@MMK_R_te-cy" = -20;
+"@MMK_R_de-cy" = 20;
 };
 "@MMK_L_x" = {
 "@MMK_R_a" = -40;
@@ -83136,23 +83123,11 @@ AE = -160;
 "@MMK_R_period" = -40;
 "@MMK_R_seven" = -80;
 };
-"@MMK_L_eght" = {
-"@MMK_R_period" = -40;
-};
-"@MMK_L_fve" = {
-"@MMK_R_period" = -40;
-};
-"@MMK_L_nne" = {
-"@MMK_R_period" = -40;
-};
-"@MMK_L_sx" = {
-"@MMK_R_period" = -40;
-};
 };
 };
 manufacturer = "Daniel Johnson";
 manufacturerURL = "http://www.danieljohnson.name";
 unitsPerEm = 2000;
 versionMajor = 5;
-versionMinor = 201;
+versionMinor = 200;
 }
