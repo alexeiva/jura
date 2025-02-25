@@ -3,4 +3,4 @@ fontbakery>=0.7
 gftools[qa]>=0.9.54
 sh>=2.0.6
 diffenator2>=0.3.8
-pycairo>=1.27.0
+pycairo>=1.11.0

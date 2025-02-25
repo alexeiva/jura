@@ -30,31 +30,31 @@ html {
 }
 	@font-face {
     font-family: 'Jura-Bold';
-    src: url('webfonts/Jura-Bold.ttf') format('truetype');
+    src: url('webfonts/Jura-Bold.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
 }
 	@font-face {
     font-family: 'Jura-SemiBold';
-    src: url('webfonts/Jura-SemiBold.ttf') format('truetype');
+    src: url('webfonts/Jura-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: 'Jura-Medium';
-    src: url('webfonts/Jura-Medium.ttf') format('truetype');
+    src: url('webfonts/Jura-Medium.woff2') format('woff2');
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
     font-family: 'Jura-Regular';
-    src: url('webfonts/Jura-Regular.ttf') format('truetype');
+    src: url('webfonts/Jura-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
     font-family: 'Jura-Light';
-    src: url('webfonts/Jura-Light.ttf') format('truetype');
+    src: url('webfonts/Jura-Light.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
 }
